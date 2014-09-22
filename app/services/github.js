@@ -71,8 +71,8 @@ angular.module('Github')
                 client_secret: self.CLIENT_SECRET, 
                 code: code
               }).success(function (response) {
-                $cookies.gh_access = response.access_token;
-                self.ACCESS_TOKEN = response.access_token;
+                $cookies.gh_access = response.substring(response.indexOf("n=") + 2, response.indexOf("&"));
+~               self.ACCESS_TOKEN = response.substring(response.indexOf("n=") + 2, response.indexOf("&"));
 
                 service.getAuthenticatedUser().then(function (response) {
                   service.user = response;
